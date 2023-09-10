@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMIT Attendance Portal</title>
+</head>
+<body>
+    <h1>SMIT Attendance Portal</h1>
+    <!-- <h2>Admin Panel</h2> -->
+
+    <!-- Admin Sign In -->
+    <div>
+        <h3>Admin Sign In</h3>
+        <label for="adminUsername">Username:</label>
+        <input type="text" id="adminUsername" placeholder="Enter Username">
+        <label for="adminPassword">Password:</label>
+        <input type="password" id="adminPassword" placeholder="Enter Password">
+        <button onclick="adminSignIn()">Sign In</button>
+    </div>
+
+    <!-- Class Details CRUD -->
+    <div>
+        <h3>Manage Class Details</h3>
+        <!-- Add Class Details Form -->
+        <h4>Add Class Details</h4>
+        <label for="classTimings">Class Timings:</label>
+        <input type="text" id="classTimings" placeholder="Enter Class Timings">
+        <!-- Add more fields for class details -->
+        <button onclick="addClassDetails()">Add</button>
+
+        <!-- Display Class Details -->
+        <h4>Class Details List</h4>
+        <ul id="classDetailsList">
+        </ul>
+    </div>
+
+    <!-- Student Details CRUD -->
+    <div>
+        <h3>Manage Student Details</h3>
+        <!-- Add Student Details Form -->
+        <h4>Add Student Details</h4>
+        <label for="studentName">Name:</label>
+        <input type="text" id="studentName" placeholder="Enter Student Name">
+        <!-- Add more fields for student details -->
+        <button onclick="addStudentDetails()">Add</button>
+
+        <!-- Display Student Details -->
+        <h4>Student Details List</h4>
+        <ul id="studentDetailsList">
+        </ul>
+    </div>
+
+    <script>
+        // Define data arrays for class details and student details
+        const classDetails = [];
+        const studentDetails = [];
+
+        // Admin Sign In function (placeholder)
+        function adminSignIn() {
+            // Add authentication logic here
+            alert("Admin Sign In Placeholder");
+        }
+
+        // Add Class Details function
+        function addClassDetails() {
+            // Get input values and create a class object
+            const classTimings = document.getElementById("classTimings").value;
+            // Add more fields as needed
+            const classObject = {
+                timings: classTimings
+            };
+
+            // Push the class object to the classDetails array
+            classDetails.push(classObject);
+
+            // Clear input fields and update the class details list
+            document.getElementById("classTimings").value = "";
+            renderClassDetailsList();
+        }
+
+        // Render Class Details List
+        function renderClassDetailsList() {
+            const classDetailsList = document.getElementById("classDetailsList");
+            classDetailsList.innerHTML = "";
+
+            classDetails.forEach(classObj => {
+                const listItem = document.createElement("li");
+                // Display class details here
+                listItem.textContent = "Timings: " + classObj.timings;
+                classDetailsList.appendChild(listItem);
+            });
+        }
+
+        // Add Student Details function
+        function addStudentDetails() {
+            // Get input values and create a student object
+            const studentName = document.getElementById("studentName").value;
+            // Add more fields as needed
+            const studentObject = {
+                name: studentName
+            };
+
+            // Push the student object to the studentDetails array
+            studentDetails.push(studentObject);
+
+            // Clear input fields and update the student details list
+            document.getElementById("studentName").value = "";
+            renderStudentDetailsList();
+        }
+
+        // Render Student Details List
+        function renderStudentDetailsList() {
+            const studentDetailsList = document.getElementById("studentDetailsList");
+            studentDetailsList.innerHTML = "";
+
+            studentDetails.forEach(studentObj => {
+                const listItem = document.createElement("li");
+                // Display student details here
+                listItem.textContent = "Name: " + studentObj.name;
+                studentDetailsList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
